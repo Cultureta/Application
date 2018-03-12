@@ -1,10 +1,49 @@
-
-# HTTP Server
-server:
-  port: ${PORT:3333}   # HTTP port
   
 # Discovery Server Access
 eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_ENDPOINT}
+#PORT
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ListadoETSIDI
+
+#BASE DE DATOS
+#spring.datasource.url = jdbc:mysql://localhost:3306/test
+#spring.datasource.username = root
+#spring.datasource.password =
+#spring.datasource.driver-class-name = com.mysql.jdbc.Driver
+
+#ESPECIFICAR LA BASE DE DATOS
+#spring.jpa.database = MYSQL
+#spring.jpa.show-sql = true
+#spring.jpa.hibernate.ddl-auto = update
+#spring.jpa.hibernate.naming.strategy = org.hibernate.cfg.ImprovedNamingStrategy
+#spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MYSQL5Dialect
+
+server:
+  context-path: /inicio
+server:
+  session:
+    cookie:
+      name: UISESSION
+
+
+security:
+  basic:
+    enabled: false
+  oauth2:
+    client:
+      clientId: ClientId
+      clientSecret: secret
+      accessTokenUri: http://localhost:8081/auth/oauth/token
+      userAuthorizationUri: http://localhost:8081/auth/oauth/authorize
+    resource:
+      userInfoUri: http://localhost:8081/auth/principal
+
+
+spring.thymeleaf.cache: false
