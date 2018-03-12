@@ -3,23 +3,23 @@ server:
   port: ${PORT:2222}   # HTTP port
 
 # Discovery Server Access
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_ENDPOINT}
+#eureka:
+  #client:
+    #serviceUrl:
+     # defaultZone: ${EUREKA_ENDPOINT}
 
-logging:
-  file: logs/${spring.application.name}.log
-  level:
-    com.netflix.discovery: 'OFF'
-    org.springframework.cloud: 'INFO'
-    org.springframework.web: 'INFO'
-    com.atsistemas: 'DEBUG'
+#logging:
+  #file: logs/${spring.application.name}.log
+  #level:
+    #com.netflix.discovery: 'OFF'
+   ## org.springframework.cloud: 'INFO'
+   #org.springframework.web: 'INFO'
+   # com.atsistemas: 'DEBUG'
 
-cygnus:
-  sadr:
-    name: sadr
-    pingUrl: http://${cygnus.sadr.name}/ping/
+#cygnus:
+ # sadr:
+    #name: sadr
+    #pingUrl: http://${cygnus.sadr.name}/ping/
 
 spring:
    rabbitmq:
@@ -27,3 +27,11 @@ spring:
      port: 5672
      username: guest
      password: guest
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8302/eureka/
+  instance:
+    hostname: localhost
