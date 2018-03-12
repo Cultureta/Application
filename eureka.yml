@@ -1,12 +1,27 @@
 server:
   port: 8761
 
+#eureka:
+ # client:
+  #  registerWithEureka: false
+   # fetchRegistry: false
+    #server:
+     # waitTimeInMsWhenSyncEmpty: 0
+# Configure this Discovery Server
 eureka:
-  client:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:  # Not a client, don't register with yourself
     registerWithEureka: false
     fetchRegistry: false
-    server:
-      waitTimeInMsWhenSyncEmpty: 0
+  server:
+    enableSelfPreservation: false
+
+# Discovery Server Dashboard uses FreeMarker.  Don't want Thymeleaf templates
+spring:
+  thymeleaf:
+    enabled: false     # Disable Thymeleaf 
 
 zuul:
   #Service will be mapped under the /api URI
